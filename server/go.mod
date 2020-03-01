@@ -1,4 +1,4 @@
-module vblog.me.com
+module server
 
 go 1.13
 

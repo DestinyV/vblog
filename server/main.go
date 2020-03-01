@@ -1,9 +1,9 @@
 package main
 
 import (
-	"vblog.me.com/GinServer/Router"
+	"server/Router"
 
-	Mysql "vblog.me.com/GinServer/Databases"
+	Mysql "server/Databases"
 )
 
 func main() {

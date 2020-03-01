@@ -1,7 +1,7 @@
 package Models
 
 import (
-	Mysql "vblog.me.com/GinServer/Databases"
+	Mysql "server/Databases"
 )
 
 type Test struct {

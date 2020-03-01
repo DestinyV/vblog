@@ -1,7 +1,7 @@
 package Services
 
 import (
-	"vblog.me.com/GinServer/Models"
+	"server/Models"
 )
 
 type Test struct {

@@ -3,10 +3,15 @@ package Controllers
 import (
 	"net/http"
 
-	"vblog.me.com/GinServer/Services"
+	"server/Services"
 
 	"github.com/gin-gonic/gin"
 )
+
+type Return struct {
+	Name string
+	Content string
+} 
 
 func TestInsert(c *gin.Context) {
 	var testService Services.Test
@@ -31,4 +36,15 @@ func TestInsert(c *gin.Context) {
 		"data":    id,
 	})
 
+}
+
+func TestGet(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"code":    200,
+		"message": "get",
+		"data":    &Return{
+			Name: "hello",
+			Content: "world",
+		},
+	})
 }
