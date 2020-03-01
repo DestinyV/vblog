@@ -1,7 +1,6 @@
 # vBlog
 
-**a project combine golang with vue**
-
+**a project use golang which combine with vue**
 
 
 
