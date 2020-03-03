@@ -10,7 +10,7 @@ var Store = cookie.NewStore([]byte("very-very-secret"))
 
 func SetSession(c *gin.Context, username string) string {
 	session := sessions.Default(c)
-	sessionId := "sessionIdxxxxxxxok"
+	sessionId := "sessionId"
 	session.Set(sessionId, username)
 	session.Save()
 	return sessionId

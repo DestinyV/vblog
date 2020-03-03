@@ -11,7 +11,7 @@ var DB *gorm.DB
 
 func init() {
 	var err error
-	DB, err = gorm.Open("mysql", "root:123456@/gin?charset=utf8&parseTime=True&loc=Local")
+	DB, err = gorm.Open("mysql", "root:123456@/golangdb?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		fmt.Printf("mysql connect error %v", err)
 	}

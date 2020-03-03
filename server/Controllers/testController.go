@@ -9,9 +9,9 @@ import (
 )
 
 type Return struct {
-	Name string
+	Name    string
 	Content string
-} 
+}
 
 func TestInsert(c *gin.Context) {
 	var testService Services.Test
@@ -35,15 +35,14 @@ func TestInsert(c *gin.Context) {
 		"message": "success",
 		"data":    id,
 	})
-
 }
 
 func TestGet(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"code":    200,
 		"message": "get",
-		"data":    &Return{
-			Name: "hello",
+		"data": &Return{
+			Name:    "hello",
 			Content: "world",
 		},
 	})
