@@ -10,9 +10,9 @@ type Test struct {
 }
 
 // 设置Test的表名为`test`
-// func (Test) TableName() string {
-//     return "test"
-// }
+func (Test) TableName() string {
+	return "test"
+}
 
 func (this *Test) Insert() (id int, err error) {
 	result := Mysql.DB.Create(&this)

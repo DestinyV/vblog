@@ -15,10 +15,11 @@ func InitRouter() {
 	router.Use(Middlewares.Cors())
 	// 使用 session(cookie-based)
 	router.Use(sessions.Sessions("mysession", Sessions.Store))
-	v1 := router.Group("v1")
+	v1 := router.Group("api/v1")
 	{
 		v1.GET("/testGet", Controllers.TestGet)
+		v1.POST("/vLog/user/login", Controllers.Login)
 	}
 
-	router.Run(":8080")
+	router.Run(":8899")
 }
