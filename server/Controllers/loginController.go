@@ -1,35 +1,37 @@
 package Controllers
 
 import (
-	"fmt"
 	"net/http"
+	"server/Models"
+	"server/Services"
 
 	"github.com/gin-gonic/gin"
 )
 
-type Token struct {
-	Token string
-}
-
-type User struct {
-	Username string `json: "username"`
-	Password string `json: "password"`
-}
-
 func Login(c *gin.Context) {
-	var user User
+	var user Services.User
+	var searchUser *Models.User
 	err := c.BindJSON(&user)
 	if err != nil {
-		c.JSON(200, gin.H{"errcode": 400, "message": "Post Data Error"})
+		c.JSON(200, gin.H{"code": 400, "message": "请求参数错误"})
 		return
-	} else {
-		fmt.Printf("Username is :%#v\n Password is: %#v\n", user.Username, user.Password)
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"code":    200,
-		"message": "login info get successful",
-		"data": &Token{
-			Token: "hello",
-		},
-	})
+	searchUser, err = user.Login()
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{
+			"code":    401,
+			"message": "用户名或密码错误",
+		})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"code":    200,
+			"message": "登录成功",
+			"data": gin.H{
+				"token": "login-token",
+				"data": gin.H{
+					"name": searchUser.Name,
+				},
+			},
+		})
+	}
 }
